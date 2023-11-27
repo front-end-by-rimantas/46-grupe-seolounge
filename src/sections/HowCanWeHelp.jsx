@@ -10,6 +10,7 @@ export function HowCanWeHelp() {
             .then(resData => setData(resData.services))
             .then(() => console.log(data))
             .catch(err => setIsError(true));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const emptyServices = <div className="col-12">Loading services data...</div>;
