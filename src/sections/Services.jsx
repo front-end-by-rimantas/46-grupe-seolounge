@@ -3,8 +3,12 @@ import { FaGitAlt } from 'react-icons/fa6';
 import { TbBrandJavascript } from 'react-icons/tb';
 import { CgSmartHomeRefrigerator } from 'react-icons/cg';
 import { ServiceBlock } from '../components/ServiceBlock';
+import { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalContext';
 
 export function Services({ limit, sortBy }) {
+    const { luckyNumber, updateLuckyNumber } = useContext(GlobalContext);
+
     const servicesData = [
         {
             id: 1,
@@ -70,9 +74,21 @@ export function Services({ limit, sortBy }) {
         price90: sortByPriceZA,
     }
 
+    function dydintiBtn() {
+        updateLuckyNumber(luckyNumber + 1);
+    }
+    function mazintiBtn() {
+        updateLuckyNumber(luckyNumber - 1);
+    }
+
     return (
         <div className="container px-4 py-5" id="featured-3">
             <h2 className="pb-2 border-bottom">Services we provide</h2>
+            <div className="row">
+                <span>Lucky number:</span>
+                <button onClick={dydintiBtn}>Dydinti</button>
+                <button onClick={mazintiBtn}>Mazinti</button>
+            </div>
             <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
                 {
                     servicesData
